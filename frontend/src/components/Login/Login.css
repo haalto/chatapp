@@ -1,0 +1,75 @@
+.Login {
+    -webkit-transition-duration: 0.4s;
+    border-radius: 50px;
+    box-shadow: 1px 1px 1px;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    margin-top: 5%;
+    padding-top: 10px;
+    background-color: whitesmoke;
+}
+
+.LoginContent {
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    padding-top: 5%;  
+}
+
+.LoginInput {
+    display: block;
+    font-weight:300;
+    width: 100%;
+    font-size: 25px;
+    border:0px;
+    outline: none;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #4b545f;
+    background-color: whitesmoke;
+    padding: 10px 15px;
+    margin: 30px 0px;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    border-bottom:1px solid #4b545f;
+}
+
+.LoginInput:focus {
+    border: 2px solid rgb(179, 130, 57);     
+    border-radius: 25px;
+}
+
+.LoginButton {
+    display: block;
+    font-weight:300;
+    width: 50%;
+    font-size: 25px;
+    border:0px;
+    outline: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #4b545f;
+    background-color: whitesmoke;
+    padding: 10px 15px;
+    margin: auto;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    outline-style: none !important;
+}
+
+.LoginButton:hover {
+    border: 2px solid rgb(179, 130, 57);     
+    border-radius: 25px;
+}
+
+

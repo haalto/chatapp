@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;  
+}
+
+.ChatContainer {
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(8, 1fr);
+    display: grid;
+    grid-template-areas: 
+    "a a a b b b b"
+}
+
+.ChatUsers {
+    background-color: whitesmoke;
+    width: 40%;
+    max-width: 80%;
+    grid-area: a;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 5%;
+    font-size: 0.8em;
+}
+
+.Chat {
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px;
+    width: 100%;
+    height: 80%;
+    margin-top: 5%;
+    margin: auto;
+    background-color: whitesmoke;
+    box-sizing: border-box;
+    display: grid;
+    overflow: hidden;
+    grid-area: b;
+}
+
+
+
+.ChatBox {
+    width: 98%; 
+    overflow: auto;
+    box-sizing: border-box;    
+    translate: 100px;
+    direction: rtl;
+    position: relative;
+    padding-right: 10px;
+    transform: rotate(180deg);
+}
+
+.ChatMessages {
+    width: 95%;
+    max-width: 95%;
+    overflow-y: scroll;
+    direction: rtl;     
+    margin: auto;
+    padding-right: 10px; 
+    position : relative; bottom:0;
+    transform: rotate(180deg);
+    direction: ltr;
+    align-self: flex-end;
+    display: inline-block;
+}
+
+.ChatForm {
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: none;
+    display: inline-block;
+    align-self: flex-end;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px; 
+    padding: 10px;   
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
