@@ -4,20 +4,19 @@ const Users = ( {users} ) => {
   
     let userCount = 0
   
-    const mappedUsers = () => users.map(u => {
+    const renderUsers = () => users.map(u => {
       
       userCount += 1
   
       if (u) {
-        return <p key={userCount}>{u}</p>
+        return <p className="chat-user" key={userCount}>{u}</p>
       }    
       return null
     }) 
     
     return (
-      <div className="container">
-        <h5>Following users are online:</h5>
-        <div>{mappedUsers()}</div>
+      <div className="container">        
+        <div>{renderUsers()}</div>
       </div>
       
     )

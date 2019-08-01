@@ -3,24 +3,24 @@ import './Login.css'
 
 const Login = ( {newUserName, handleUserNameChange, submitUserName} ) => {
     return (
-        <div className="Login"> 
-            <div className="LoginContent" >
-                <h3>hello anonymous </h3>
-                <p>give yourself a name</p>
-                <div className="input-group">                                   
-                    <form onSubmit={submitUserName}>
-                        <input 
-                            className="LoginInput"
-                            value={newUserName} 
-                            onChange={handleUserNameChange}>          
-                        </input>
-                        <button 
-                            className="LoginButton"
-                            type="submit">enter
-                        </button >
-                    </form>
-                </div> 
+        <div className="login">
+            <div className="login-header">
+                <span className="login-header-main">hello anonymous </span>
+                <span className="login-header-sub">give yourself a name</span>
             </div>
+            <div className="login-form">                                   
+                <form onSubmit={submitUserName}>
+                    <input 
+                        className="login-input"
+                        value={newUserName} 
+                        onChange={handleUserNameChange}>          
+                    </input>
+                    <button 
+                        className="login-button"
+                        type="submit">enter
+                    </button >
+                </form>
+            </div> 
         </div>
     )
 }
