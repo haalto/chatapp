@@ -1,8 +1,10 @@
 const config = require('./utils/config')
 const express  = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 const http = require('http').createServer(app)
 const cors = require('cors')
+const expressSanitizer = require('express-sanitizer');
 const middleware = require('./utils/middleware')
 const mongoose = require('mongoose')
 
@@ -18,12 +20,14 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true })
   })
 
 app.use(cors())
+app.use(expressSanitizer())
+app.use(bodyParser.json())
+
+const usersRouter = require('./controllers/users')
+app.use('/api/users', usersRouter)
+
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
-
-app.get('/', (req, res, next) => {
-    res.send('Hello')
-})
 
 http.listen(config.PORT, () => {
     console.log(`Server running on port ${config.PORT}`)

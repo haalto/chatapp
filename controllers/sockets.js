@@ -23,7 +23,7 @@ module.exports = (io) => {
             io.sockets.emit('active-users', users)           
         })
 
-        //Server receives a message from client and send it to other clients
+        //Server receives a message from client and sends it to other clients
         socket.on('new-message', message => {
             console.log('Send new message to clients', message)
             message.time = new Date().toLocaleTimeString()    
