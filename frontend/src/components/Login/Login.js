@@ -1,19 +1,27 @@
 import React from 'react'
 import './Login.css'
 
-const Login = ( {newUserName, handleUserNameChange, submitUserName} ) => {
+const Login = ( {username, password, handleUsernameChange, handlePasswordChange, handleSubmit,handleShowSign} ) => {
     return (
         <div className="login">
             <div className="login-header">
                 <span className="login-header-main">hello anonymous </span>
-                <span className="login-header-sub">give yourself a name</span>
+                <span className="login-header-sub">login or <span className="sign-up-link" onClick={handleShowSign}>sign up</span></span>
             </div>
             <div className="login-form">                                   
-                <form onSubmit={submitUserName}>
+                <form onSubmit={handleSubmit}>
                     <input 
                         className="login-input"
-                        value={newUserName} 
-                        onChange={handleUserNameChange}>          
+                        value={username} 
+                        onChange={handleUsernameChange}
+                        placeholder="username">                                  
+                    </input>
+                    <input 
+                        className="login-input"  
+                        type="password"
+                        placeholder="password"
+                        value={password}
+                        onChange={handlePasswordChange}>          
                     </input>
                     <button 
                         className="login-button"

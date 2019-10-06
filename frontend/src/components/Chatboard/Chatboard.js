@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import Users from '../Users/Users'
 import './Chatboard.css'
 
-const Chatboard = ( {userName, message, submitMessage, handleMessageChange, users, messages} ) => {
+const Chatboard = ( {username, message, submitMessage, handleMessageChange, users, messages} ) => {
  
     let count = 0
   
@@ -38,7 +38,7 @@ const Chatboard = ( {userName, message, submitMessage, handleMessageChange, user
         </div>
         <div className="chat-form">
               <form onSubmit={submitMessage}>                 
-                  <strong>{userName}:</strong>
+                  <strong>{username}:</strong>
                   <input
                     className="chat-input" 
                     onChange={handleMessageChange} 

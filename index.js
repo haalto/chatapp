@@ -7,6 +7,7 @@ const cors = require('cors')
 const expressSanitizer = require('express-sanitizer');
 const middleware = require('./utils/middleware')
 const mongoose = require('mongoose')
+const morgan = require('morgan')
 
 const io = require('socket.io')(http)
 require('./controllers/sockets')(io)
@@ -22,9 +23,13 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true })
 app.use(cors())
 app.use(expressSanitizer())
 app.use(bodyParser.json())
+app.use(morgan('tiny'))
 
 const usersRouter = require('./controllers/users')
 app.use('/api/users', usersRouter)
+
+const loginRouter = require('./controllers/login')
+app.use('/login', loginRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)

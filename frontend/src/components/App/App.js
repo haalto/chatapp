@@ -1,45 +1,56 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './App.css'
 import Chatboard from '../Chatboard/Chatboard'
 import Login from '../Login/Login'
+import Sign from '../Sign/Sign'
 import io from 'socket.io-client'
-const socket = io('http://localhost:3001')
+import userServices from '../../services/userServices'
+import loginServices from '../../services/loginServices'
 
-//https://medium.com/@rossbulat/react-hooks-managing-web-sockets-with-useeffect-and-usestate-2dfc30eeceec
-//https://www.youtube.com/watch?v=rxzOqP9YwmM
-//https://socket.io/get-started/chat/
-//https://www.youtube.com/watch?v=tHbCkikFfDE
-//https://css-tricks.com/build-a-chat-app-using-react-hooks-in-100-lines-of-code/
-//https://www.youtube.com/watch?v=f8el0g_rXbY
+const App = () => {   
 
-const App = () => {  
+  //User state
+  const [ user, setUser ] = useState('')
+  const [ token, setToken ] = useState('')  
+  //Login state
+  const [ loginUsername, setLoginUsername] = useState('')
+  const [ loginPassword, setLoginPassword] = useState('')
 
-  //Client data
-  const [ userName, setUserName ] = useState('')
-  const [ newUserName, setNewUserName ] = useState('')
+  //Sign up state
+  const [ signUsername, setSignUsername] = useState('')
+  const [ signPassword, setSignPassword] = useState('')
+
+  //New message
   const [ message, setMessage ] = useState('')
-  const [ showLogin, setShowLogin] = useState(true)
-  const [ showChat, setShowChat ] = useState(false) 
 
   //Other clients and messages
   const [messages, setMessages] = useState([''])
   const [ activeUsers, setActiveUsers] = useState([''])
 
+  //View state
+  const [ showLogin, setShowLogin] = useState(true)
+  const [ showSign, setShowSign ] = useState(false)
+  const [ showChat, setShowChat ] = useState(false)
+
+  const { current: socket } = useRef(io('http://localhost:3001', {
+    autoConnect: false  
+  }))
 
   //Effects*****************************************
-  useEffect(() => {
-    
-    if (userName) {
-      setShowLogin(false)
-      setShowChat(true)
-      socket.emit('new-user', {
-        username: userName
-      })
-    }
-  }, [userName])
 
+  //If user logged in succesfully connect socket to server
   useEffect(() => {
     
+    if (token) {
+      socket.io.opts.query = { token }   
+      socket.open()     
+      setShowLogin(false)
+      setShowChat(true)    
+    }
+  }, [token, socket])
+  
+  useEffect(() => {    
+
     //receive messages
     socket.on('chat-message', message => {
       console.log(`Received message: ${message.message} from ${message.user}`)
@@ -50,18 +61,75 @@ const App = () => {
       console.log('Active users', userData)
       setActiveUsers(userData)
     })
-  }, []) 
 
-  //Handlers*************************************
+  }, [socket]) 
 
-  const submitUserName = (event) => {  
-    event.preventDefault()
-    setUserName(newUserName)
-    setNewUserName('')
+  //Handlers************************************* 
+
+  //Login handlers
+  const handleLoginUsernameChange = (event) => {
+    setLoginUsername(event.target.value)
   }
 
-  const handleUserNameChange = (event) => {
-    setNewUserName(event.target.value)
+  const handleLoginPasswordChange = (event) => {
+    setLoginPassword(event.target.value)
+  }
+
+  const handleLoginSubmit = (event) => {
+    event.preventDefault()
+
+    const user = {
+      username: loginUsername,
+      password: loginPassword
+    }
+
+    loginServices.login(user)
+      .then(res => {
+        setLoginUsername('')
+        setLoginPassword('')
+        setUser(res.username)
+        setToken(res.token)  
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  //Sign up handlers
+  const handleSignUsernameChange = (event) => {
+    setSignUsername(event.target.value)
+  }
+
+  const handleSignPasswordChange = (event) => {
+    setSignPassword(event.target.value)
+  }
+
+  const handleSignSubmit = (event) => {
+    event.preventDefault()
+
+    const user = {
+      username: signUsername,
+      password: signPassword
+    }
+
+    userServices.create(user)
+      .then(returnedUser => {
+        return loginServices.login(user) // if user was created succesfully, login user automatically
+      })
+      .then(res => {
+        console.log(res)
+        setUser(res.username)
+        setToken(res.token) 
+        setSignUsername('')
+        setSignPassword('')
+        setShowSign(false)
+      })
+      .catch(err => console.log(err))    
+  }
+
+  //Message handlers
+  const handleMessageChange = (event) => {
+    setMessage(event.target.value) 
   }
 
   const submitMessage = (event) => {
@@ -71,14 +139,16 @@ const App = () => {
       console.log('Sending a new message')
       socket.emit('new-message', {
           message: message,
-          username: userName
+          user: user
       })
       setMessage('')
     }   
   }
 
-  const handleMessageChange = (event) => {
-    setMessage(event.target.value)
+  //View handlers
+  const handleShowLoginOrSign = () => {
+    setShowLogin(!showLogin)
+    setShowSign(!showSign)
   }
 
   return (
@@ -86,16 +156,31 @@ const App = () => {
       {showLogin 
         ?
           <Login
-            newUserName={newUserName} 
-            submitUserName={submitUserName}
-            handleUserNameChange={handleUserNameChange}
+            username={loginUsername}
+            password={loginPassword} 
+            handleSubmit={handleLoginSubmit}
+            handleUsernameChange={handleLoginUsernameChange}
+            handlePasswordChange={handleLoginPasswordChange}
+            handleShowSign={handleShowLoginOrSign}
           />
         : ''
       }
+      {showSign
+        ?
+          <Sign
+            handleShowLogin={handleShowLoginOrSign}
+            username={signUsername}
+            password={signPassword}
+            handleUsernameChange={handleSignUsernameChange}
+            handlePasswordChange={handleSignPasswordChange}
+            handleSubmit={handleSignSubmit}            
+        />
+        :''
+      }     
       {showChat
         ?
           <Chatboard
-            userName={userName}
+            username={user}
             message={message}
             submitMessage={submitMessage}
             handleMessageChange={handleMessageChange}
@@ -103,8 +188,7 @@ const App = () => {
             users={activeUsers}
           />
         : ''
-      }
-      
+      }     
     </div>    
   )
 }

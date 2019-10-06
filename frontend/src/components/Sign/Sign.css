@@ -1,4 +1,4 @@
-.login {
+.sign {
     position: absolute;
     border-radius: 20px;
     box-shadow: 1px 1px 1px;
@@ -11,14 +11,14 @@
     transform: translate(-50%, -90%);
 }
 
-.login-header {
+.sign-header {
     position: absolute;
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);  
 }
 
-.login-header-main {
+.sign-header-main {
     display: block;
     font-weight: 400;
     font-size: 1.7em;
@@ -29,7 +29,7 @@
     
 }
 
-.login-header-sub {
+.sign-header-sub {
     display: block;
     font-weight: 300;
     font-size: 1.3em;
@@ -52,7 +52,7 @@
     border-bottom: 1px solid rgb(179, 130, 57);
 }
 
-.login-form {    
+.sign-form {    
     text-align:center;
     position: absolute;
     margin: auto;
@@ -63,7 +63,7 @@
     transform: translate(-50%, -50%);
 }
 
-.login-input {    
+.sign-input {    
     font-weight:300;
     width: 40%;
     font-size: 25px;
@@ -83,13 +83,13 @@
     animation-duration: 1s;
 }
 
-.login-input:focus {
+.sign-input:focus {
     border-bottom: 1px solid rgb(179, 130, 57);
     transition: all 0.2s ease-in-out;
     transform: translateY(-4px);    
 }
 
-.login-button {
+.sign-button {
     font-weight:300;
     font-size: 25px;
     outline: none;
@@ -109,7 +109,7 @@
 
 }
 
-.login-button:hover {
+.sign-button:hover {
     border: 1px solid rgb(179, 130, 57);     
     border-radius: 25px;
 }
