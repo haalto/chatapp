@@ -5,7 +5,7 @@ const Login = ( {username, password, handleUsernameChange, handlePasswordChange,
     return (
         <div className="login">
             <div className="login-header">
-                <span className="login-header-main">hello anonymous </span>
+                <span className="login-header-main">hello anonymous test test</span>
                 <span className="login-header-sub">login or <span className="sign-up-link" onClick={handleShowSign}>sign up</span></span>
             </div>
             <div className="login-form">                                   
