@@ -1,12 +1,11 @@
 
 .chat {
-    width: 100vh;
-    height: 95vh;
+    height: 80vh;
     margin: auto;
+    margin: 2vh;
     border-radius: 5px;
     box-shadow: 1px 1px 1px;
     background-color: whitesmoke;
-    padding-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -36,7 +35,6 @@
 }
 
 .chat-users {
-    height: 5%;
     font-size: 1.2em;
     padding: 10px;
     display: flex;
@@ -74,7 +72,6 @@
     align-self: flex-end;
     margin: auto;
     padding: 10px;
-
     display: flex;
     flex-direction: column;
 }

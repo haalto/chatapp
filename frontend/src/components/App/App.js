@@ -153,42 +153,52 @@ const App = () => {
 
   return (
     <div className="App">
-      {showLogin 
-        ?
-          <Login
-            username={loginUsername}
-            password={loginPassword} 
-            handleSubmit={handleLoginSubmit}
-            handleUsernameChange={handleLoginUsernameChange}
-            handlePasswordChange={handleLoginPasswordChange}
-            handleShowSign={handleShowLoginOrSign}
-          />
-        : ''
-      }
-      {showSign
-        ?
-          <Sign
-            handleShowLogin={handleShowLoginOrSign}
-            username={signUsername}
-            password={signPassword}
-            handleUsernameChange={handleSignUsernameChange}
-            handlePasswordChange={handleSignPasswordChange}
-            handleSubmit={handleSignSubmit}            
-        />
-        :''
-      }     
-      {showChat
-        ?
-          <Chatboard
-            username={user}
-            message={message}
-            submitMessage={submitMessage}
-            handleMessageChange={handleMessageChange}
-            messages={messages}
-            users={activeUsers}
-          />
-        : ''
-      }     
+      <div className="grid-container">
+        <div>navbar</div>
+        {showLogin 
+          ?
+          <div className="main">
+            <Login
+              username={loginUsername}
+              password={loginPassword} 
+              handleSubmit={handleLoginSubmit}
+              handleUsernameChange={handleLoginUsernameChange}
+              handlePasswordChange={handleLoginPasswordChange}
+              handleShowSign={handleShowLoginOrSign}
+            />
+          </div>
+          : ''
+        }
+        {showSign
+          ?
+            <div className="main">
+              <Sign
+                handleShowLogin={handleShowLoginOrSign}
+                username={signUsername}
+                password={signPassword}
+                handleUsernameChange={handleSignUsernameChange}
+                handlePasswordChange={handleSignPasswordChange}
+                handleSubmit={handleSignSubmit}            
+            />
+          </div>
+          :''
+        }     
+        {showChat
+          ?
+            <div className="main">
+              <Chatboard
+                username={user}
+                message={message}
+                submitMessage={submitMessage}
+                handleMessageChange={handleMessageChange}
+                messages={messages}
+                users={activeUsers}
+              />
+            </div>
+          : ''
+        }
+        <div>footer</div>
+      </div>  
     </div>    
   )
 }

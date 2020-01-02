@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Users = ( {users} ) => {
+const Users = ({ users }) => {
   
     let userCount = 0
   

@@ -1,21 +1,15 @@
 .sign {
-    position: absolute;
+    display: flex;
+    flex-direction: column;
     border-radius: 20px;
     box-shadow: 1px 1px 1px;
-    width: 90vh;
-    height: 60vh;
-    margin-top: 5%;
     background-color: whitesmoke;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -90%);
+    margin: 2vh;
+    height: 60vh;
 }
 
 .sign-header {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);  
+    margin: 2vh;
 }
 
 .sign-header-main {
@@ -25,8 +19,7 @@
 
     animation-name: moveFromLeft;
     animation-duration: 0.9s;
-    animation-timing-function: ease-out;
-    
+    animation-timing-function: ease-out;    
 }
 
 .sign-header-sub {
@@ -53,32 +46,24 @@
 }
 
 .sign-form {    
-    text-align:center;
-    position: absolute;
-    margin: auto;
-    display: block;
-    top: 70%;
-    left: 50%;
-    width: 70%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 4em;
 }
 
 .sign-input {    
+    margin: auto;
+    margin-top: 2em;
     font-weight:300;
-    width: 40%;
-    font-size: 25px;
+    font-size: 1em;
     border:0px;
     outline: none;
-    box-sizing: border-box;
-    color: #4b545f;   
-    transition: all 0.1s ease-in-out;    
+    color: #4b545f; 
     border-bottom: 1px solid #4b545f;
     background-color: rgba(0,0,0,0);
-    display: block;
-    margin: auto;
-    margin-bottom: 70px; 
 
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s ease-in-out;   
     animation-name: moveFromTop;
     animation-duration: 1s;
 }
@@ -90,6 +75,7 @@
 }
 
 .sign-button {
+    margin-top: 4em;
     font-weight:300;
     font-size: 25px;
     outline: none;
@@ -101,12 +87,10 @@
     padding: 10px;  
     border: 1px solid transparent;
     display: block;
-    margin: auto;
-    margin-bottom: 80px;
+    margin: 2em;
 
     animation-name: moveFromBottom;
     animation-duration: 1s;
-
 }
 
 .sign-button:hover {

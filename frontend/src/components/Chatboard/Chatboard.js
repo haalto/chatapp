@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import Users from '../Users/Users'
 import './Chatboard.css'
 
-const Chatboard = ( {username, message, submitMessage, handleMessageChange, users, messages} ) => {
+const Chatboard = ({ username, message, submitMessage, handleMessageChange, users, messages }) => {
  
     let count = 0
   
@@ -27,7 +27,7 @@ const Chatboard = ( {username, message, submitMessage, handleMessageChange, user
     return (      
       <div className="chat">           
         <div className="chat-users">   
-          <span className="chat-users-header">Users online:</span>  
+          <span className="chat-users-header">users:</span>  
             <Users          
             users={users}
             />
