@@ -35,6 +35,6 @@ app.use('/login', loginRouter)
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
 
-http.listen(config.PORT, () => {
+http.listen(process.env.PORT || config.PORT, () => {
     console.log(`Server running on port ${config.PORT}`)
 })
