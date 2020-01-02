@@ -32,7 +32,7 @@ const App = () => {
   const [ showSign, setShowSign ] = useState(false)
   const [ showChat, setShowChat ] = useState(false)
 
-  const { current: socket } = useRef(io('http://localhost:3001', {
+  const { current: socket } = useRef(io('/', {
     autoConnect: false  
   }))
 
