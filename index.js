@@ -24,6 +24,7 @@ app.use(cors())
 app.use(expressSanitizer())
 app.use(bodyParser.json())
 app.use(morgan('tiny'))
+app.use(express.static('build'))
 
 const usersRouter = require('./controllers/users')
 app.use('/api/users', usersRouter)
