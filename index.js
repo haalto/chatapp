@@ -9,9 +9,6 @@ const middleware = require('./utils/middleware')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 
-const io = require('socket.io')(http)
-require('./controllers/sockets')(io)
-
 mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true })
   .then(() => {
     console.log('connected to MongoDB')
@@ -38,3 +35,6 @@ app.use(middleware.errorHandler)
 http.listen(process.env.PORT || config.PORT, () => {
     console.log(`Server running on port ${config.PORT}`)
 })
+
+const io = require('socket.io')(http)
+require('./controllers/sockets')(io)
