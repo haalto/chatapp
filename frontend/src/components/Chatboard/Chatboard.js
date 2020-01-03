@@ -3,15 +3,21 @@ import Users from '../Users/Users'
 import './Chatboard.css'
 
 const Chatboard = ({ username, message, submitMessage, handleMessageChange, users, messages }) => {
- 
-    let count = 0
   
-    const renderMessages = () => messages.map(m => {
-      
-      count += 1
-      
-      if (m) {
-        return <p className="chat-message" key={count}>{m.time} <strong>{m.username}</strong>: {m.message}</p>
+    const renderMessages = () => messages.map(message => {
+            
+      if (message) {
+        return (
+          <p 
+            className="chat-message" 
+            key={message.time+message.user}
+          >
+            {/*message.time*/} 
+            <strong>
+              {message.user}
+            </strong>
+            : {message.message}
+          </p>)
       }
       return null        
     })
@@ -36,17 +42,15 @@ const Chatboard = ({ username, message, submitMessage, handleMessageChange, user
           {renderMessages()}  
           <div ref={messagesEndRef}></div>
         </div>
-        <div className="chat-form">
-              <form onSubmit={submitMessage}>                 
-                  <strong>{username}:</strong>
-                  <input
-                    className="chat-input" 
-                    onChange={handleMessageChange} 
-                    value={message}>                    
-                  </input>
-                  <button className="chat-button" type="submit">Send</button>              
-              </form>
-          </div> 
+          <form onSubmit={submitMessage} className="chat-form">                 
+            <strong>{username}:</strong>
+            <input
+              className="chat-input" 
+              onChange={handleMessageChange} 
+              value={message}>                    
+            </input>
+            <button className="chat-button" type="submit">Send</button>              
+          </form>
     </div>
     )
   }

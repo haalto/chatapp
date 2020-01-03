@@ -36,6 +36,7 @@ module.exports = (io) => {
 
         connections.push(socket)
         console.log('New Connection, %s sockets connected', connections.length)
+        io.sockets.emit('active-users', users)
         
         socket.on('disconnect', () => {
             connections.splice(connections.indexOf(socket), 1)

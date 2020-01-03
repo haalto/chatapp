@@ -53,7 +53,7 @@ const App = () => {
 
     //receive messages
     socket.on('chat-message', message => {
-      console.log(`Received message: ${message.message} from ${message.user}`)
+      //console.log(`Received message: ${message.message} from ${message.user}`)
       setMessages(messages => messages.concat(message))
     })
     
