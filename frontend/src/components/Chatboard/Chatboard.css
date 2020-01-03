@@ -59,9 +59,11 @@
     position: relative;
     margin: auto;
     background-color: whitesmoke;
+    border-radius: 5px;
 }
 
 .chat-message {
+    margin-left: 2vh;
     overflow-wrap: break-word;
 }
 
@@ -88,7 +90,6 @@
     border-radius: 5px;
     outline-style: none !important;
     transition: all 0.2s ease-in-out;
-
 }
 
 .chat-button:hover {
@@ -109,3 +110,11 @@
     border-radius: 3px;
     box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
+
+@media only screen and (min-width: 768px) {
+    .chat {
+        margin-left: 10vh;
+        margin-right: 10vh;
+        margin-top: 5vh;
+    }
+  }

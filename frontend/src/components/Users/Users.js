@@ -1,10 +1,13 @@
 import React from 'react'
 
 const Users = ({ users }) => {
-  
+
+  let count = 0
+
   const renderUsers = () => users.map(user => {  
     if (user) {
-      return <p className="chat-user" key={user._id}>{user}</p>
+      count += 1
+      return <p className="chat-user" key={count}>{user}</p>
     }    
     return null
   }) 
