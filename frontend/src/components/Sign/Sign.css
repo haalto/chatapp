@@ -10,12 +10,14 @@
 
 .sign-header {
     margin: 2vh;
+    margin: auto;
 }
 
 .sign-header-main {
     display: block;
     font-weight: 400;
     font-size: 1.7em;
+    margin: auto;
 
     animation-name: moveFromLeft;
     animation-duration: 0.9s;
@@ -151,6 +153,14 @@
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .sign {
+        margin-left: 30vh;
+        margin-right: 30vh;
+        margin-top: 5vh;
     }
 }
 

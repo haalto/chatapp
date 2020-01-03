@@ -10,6 +10,7 @@
 
 .login-header {
     margin: 2vh;
+    margin: auto;
 }
 
 .login-header-main {
@@ -154,3 +155,10 @@
     }
 }
 
+@media only screen and (min-width: 768px) {
+    .login {
+        margin-left: 30vh;
+        margin-right: 30vh;
+        margin-top: 5vh;
+    }
+}

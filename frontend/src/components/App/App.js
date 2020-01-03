@@ -58,7 +58,7 @@ const App = () => {
     })
     
     socket.on('active-users', userData => {
-      console.log('Active users', userData)
+      //console.log('Active users', userData)
       setActiveUsers(userData)
     })
 
@@ -136,7 +136,7 @@ const App = () => {
     event.preventDefault()    
     
     if (message) {
-      console.log('Sending a new message')
+      //console.log('Sending a new message')
       socket.emit('new-message', {
           message: message,
           user: user
