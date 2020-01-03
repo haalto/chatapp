@@ -154,7 +154,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="grid-container">
-        <div>navbar</div>
+        <div></div>
         {showLogin 
           ?
           <div className="main">
@@ -197,7 +197,7 @@ const App = () => {
             </div>
           : ''
         }
-        <div>footer</div>
+        <div></div>
       </div>  
     </div>    
   )
